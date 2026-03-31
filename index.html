@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wallpaper World</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            background: black;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 300px;
+            background: url('https://picsum.photos/1200/400') no-repeat center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* MENU */
+        .menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .menu button {
+            padding: 10px 15px;
+            border: none;
+            background: #1e293b;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .menu button:hover {
+            background: #00ffcc;
+            color: black;
+        }
+
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            padding: 15px;
+        }
+
+        .card {
+            background: #111827;
+            padding: 8px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .download {
+            display: block;
+            text-align: center;
+            margin-top: 5px;
+            color: #00ffcc;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: black;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>🔥 Wallpaper World</header>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Download Free HD Wallpapers</h1>
+    <p>Anime • Nature • Cars • Animals • People</p>
+</div>
+
+<!-- MENU -->
+<div class="menu">
+    <button onclick="loadWallpapers('nature')">Nature</button>
+    <button onclick="loadWallpapers('animals')">Animals</button>
+    <button onclick="loadWallpapers('anime')">Anime</button>
+    <button onclick="loadWallpapers('people')">People</button>
+    <button onclick="loadWallpapers('cars')">Cars</button>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery" id="gallery"></div>
+
+<footer>© 2026 Wallpaper World</footer>
+
+<script>
+
+function loadWallpapers(category) {
+    let gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
+
+    for (let i = 1; i <= 100; i++) {
+
+        let imgUrl = `https://picsum.photos/400/300?random=${category}${i}`;
+        let fullUrl = `https://picsum.photos/1920/1080?random=${category}${i}`;
+
+        let card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+            <img src="${imgUrl}">
+            <a class="download" href="${fullUrl}" download>Download</a>
+        `;
+
+        gallery.appendChild(card);
+    }
+}
+
+// default
+loadWallpapers('nature');
+
+</script>
+
+</body>
+</html>
